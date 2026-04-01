@@ -93,5 +93,5 @@ This project aims to advance accessibility in education. Contributions, feedback
 ---
 
 ## 📌 Author
-
+Ho Viet Anh - the main author
 Built with a focus on real-world impact in underserved communities.
