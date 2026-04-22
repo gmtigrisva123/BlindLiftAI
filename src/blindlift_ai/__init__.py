@@ -1,0 +1,2 @@
+"""BlindLift AI application package."""
+
