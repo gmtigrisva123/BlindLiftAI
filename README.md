@@ -1,97 +1,60 @@
-# BlindLift AI
+# BlindLiftAI
 
-> AI-powered voice-first platform enabling visually impaired students to learn mathematics and build independent living skills.
+BlindLiftAI is a voice-first backend for accessible math practice, microbusiness tracking, and daily task support for visually impaired learners.
 
----
+## What is included
 
-## 🌍 Overview
+- `VoiceMath`: creates spoken-friendly arithmetic exercises and checks answers.
+- `VoiceCommerce`: manages products, sales, stock, and revenue summaries.
+- `VoiceAssistant`: stores reminders and generates a simple daily brief.
+- FastAPI service with SQLite persistence in `data/blindlift_ai.db`.
 
-BlindLift AI is an accessibility-focused initiative that leverages artificial intelligence and voice interfaces to address critical gaps in education and independence for visually impaired students.
+## Project structure
 
-Unlike traditional visual-based systems, BlindLift AI enables fully voice-driven interaction, allowing users to learn, manage tasks, and develop practical skills without relying on sight.
+- `src/blindlift_ai`: application package
+- `test`: service and API tests
+- `docs`: product notes and future architecture research
+- `data`: runtime SQLite database
 
----
+## Quick start
 
-## 🎯 Problem
+1. Install dependencies:
 
-Visually impaired students face systemic barriers in accessing STEM education and developing independent life skills due to the lack of accessible, voice-based tools.
+```bash
+python -m pip install -r requirements.txt
+```
 
----
+2. Run the API:
 
-## 💡 Solution
+```bash
+$env:PYTHONPATH="src"
+python -m uvicorn blindlift_ai.main:app --reload
+```
 
-BlindLift AI introduces a voice-first ecosystem composed of:
+3. Open the docs:
 
-- 🎤 **VoiceMath** — interactive math learning through speech
-- 💰 **VoiceCommerce** — voice-based microbusiness management
-- 🤖 **VoiceAssistant** — daily support and organization
+- Swagger UI: `http://127.0.0.1:8000/docs`
+- Health check: `http://127.0.0.1:8000/health`
 
----
+## Example endpoints
 
-## ⚙️ Key Features
+- `POST /math/exercises`
+- `POST /math/exercises/{exercise_id}/answer`
+- `POST /commerce/products`
+- `POST /commerce/sales`
+- `GET /commerce/summary`
+- `POST /assistant/reminders`
+- `GET /assistant/daily-brief`
 
-- Speech-to-text input for hands-free interaction  
-- Text-to-speech feedback for accessibility  
-- Adaptive math problem generation  
-- Voice-controlled product and income tracking  
-- Minimal cognitive load interface for accessibility  
+## Testing
 
----
+```bash
+python -m pytest
+```
 
-## 🧠 Tech Stack
+## Next steps
 
-- Python  
-- Speech Recognition (Google API / Whisper)  
-- Text-to-Speech (pyttsx3)  
-- SQLite / PostgreSQL  
-- FastAPI (in progress)  
-
----
-
-## 🎥 Demo
-
-> 🚧 Currently in development — real-user testing in progress  
-
----
-
-## 📊 Impact
-
-- Testing with visually impaired students  
-- Improving math learning accessibility  
-- Supporting independent skill development  
-
-> Quantitative results will be published after ongoing testing.
-
----
-
-## 🧪 Research Direction
-
-This project explores:
-
-- Voice-based learning systems  
-- Accessible AI design  
-- Inclusive education technologies  
-
-Future work includes formal research publication based on real-world testing.
-
----
-
-## 🚀 Roadmap
-
-- [x] MVP: Voice-based math interaction  
-- [ ] Data collection from real users  
-- [ ] AI personalization  
-- [ ] Web/mobile interface  
-- [ ] Scaling to multiple schools  
-
----
-
-## 🤝 Contribution
-
-This project aims to advance accessibility in education. Contributions, feedback, and collaboration are welcome.
-
----
-
-## 📌 Author
-Ho Viet Anh - the main author
-Built with a focus on real-world impact in underserved communities.
+- Replace the placeholder voice adapter with Whisper and TTS integrations.
+- Add authentication and per-student profiles.
+- Expand math content beyond arithmetic into guided multi-step lessons.
+- Add a frontend or mobile client for real voice interaction.
